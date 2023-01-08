@@ -1,7 +1,11 @@
 <?php
-require 'dbconn.php';
 
+include 'dbconn.php';
+session_start();
 
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+}
 
 
 ?>
@@ -30,6 +34,30 @@ require 'dbconn.php';
             text-align: center;
         }
 
+        table {
+
+            min-width: max-content;
+
+            border-collapse: separate;
+            border-spacing: 0px;
+
+        }
+
+        table th {
+            position: sticky;
+            top: 0px;
+
+            background-color: black;
+            color: white;
+
+            text-align: center;
+            font-weight: normal;
+            font-size: 18px;
+            outline: 0.7px solid black;
+            border: 1.5px solid black;
+
+        }
+
         .custom-file-input::-webkit-file-upload-button {
             visibility: hidden;
         }
@@ -49,6 +77,18 @@ require 'dbconn.php';
             font-weight: 700;
             font-size: 10pt;
         }
+
+        .table-wrapper {
+            overflow-y: scroll;
+            overflow-x: scroll;
+            height: fit-content;
+            max-height: 66.4vh;
+
+            margin-top: 22px;
+
+            margin: 15px;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -57,11 +97,13 @@ require 'dbconn.php';
     <section class="">
         <div class="border-black border flex flex-col w-fit mx-auto m-5 p-5">
             <form action="in_xlsx.php" method="post" enctype="multipart/form-data">
-                <span>Menu</span><br>
+                <div class="flex justify-between">
+                    <span>Menu</span><br>
+                    <a href="logout.php" class="bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 ">Logout</a>
+                </div>
+
                 <div class="m-4">
-
                     <input type="file" id="file" name="import_file" class="custom-file-input" />
-
                 </div>
 
                 <div>
@@ -87,54 +129,56 @@ require 'dbconn.php';
             </button>
 
         </div>
+        <div class="outer-wrapper">
+            <div class="table-wrapper">
 
+                <table class=" m-auto border-black  border-2 ">
+                    <thead class="bg-black  text-white w-full">
 
+                        <tr>
+                            <th>No</th>
+                            <th>Hari</th>
+                            <th>Slot Waktu</th>
+                            <th>Mata Kuliah</th>
+                            <th>Dosen</th>
+                            <th>Ruang</th>
+                            <th>Kelas</th>
+                            <th>Tahun</th>
+                            <th>Jumlah Jam</th>
+                            <th>Semester</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-        <table class=" m-auto border-black  border-2 my-10">
-            <tr>
-                <th>No</th>
-                <th>Hari</th>
-                <th>Mata Kuliah</th>
-                <th>Dosen</th>
-                <th>Ruang</th>
-                <th>Kelas</th>
-                <th>Tahun</th>
-                <th>Jumlah Jam</th>
-                <th>Semester</th>
-                <th>Action</th>
-            </tr>
+                    <?php
 
+                    $rows = mysqli_query($conn, "SELECT * FROM data_master");
+                    $no = 1;
+                    ?>
 
-            <?php
+                    <?php foreach ($rows as $row) : ?>
+                        <tbody style="height: 10vh;">
+                            <tr id=<?php echo $row["id_data"]; ?>>
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $row['hari']; ?></td>
+                                <td><?php echo $row['slot_waktu']; ?></td>
+                                <td><?php echo $row['mata_kuliah']; ?></td>
+                                <td><?php echo $row['dosen']; ?></td>
+                                <td><?php echo $row['ruang']; ?></td>
+                                <td><?php echo $row['kelas']; ?></td>
+                                <td><?php echo $row['tahun']; ?></td>
+                                <td><?php echo $row['jumlah_jam']; ?></td>
+                                <td><?php echo $row['semester']; ?></td>
+                                <td> <a href="data_edit.php?id_data=<?php echo $row['id_data']; ?>">Edit</a> | <button type="button" onclick="submitData(<?php echo $row['id_data']; ?>);">Delete</button> </td>
+                            </tr>
+                        </tbody>
 
-            $rows = mysqli_query($conn, "SELECT * FROM data_master");
-            $no = 1;
-            ?>
+                    <?php endforeach; ?>
 
-            <?php foreach ($rows as $row) : ?>
-                <tr id=<?php echo $row["id_data"]; ?>>
-                    <td><?php echo $no++; ?></td>
-                    <td><?php echo $row['hari']; ?></td>
-                    <td><?php echo $row['mata_kuliah']; ?></td>
-                    <td><?php echo $row['dosen']; ?></td>
-                    <td><?php echo $row['ruang']; ?></td>
-                    <td><?php echo $row['kelas']; ?></td>
-                    <td><?php echo $row['tahun']; ?></td>
-                    <td><?php echo $row['jumlah_jam']; ?></td>
-                    <td><?php echo $row['semester']; ?></td>
-                    <td> <a href="data_edit.php?id_data=<?php echo $row['id_data']; ?>">Edit</a> | <button type="button" onclick="submitData(<?php echo $row['id_data']; ?>);">Delete</button> </td>
-                </tr>
+                </table>
 
-            <?php endforeach; ?>
-
-        </table>
-
-
-
-
-
-
-
+            </div>
+        </div>
         <?php require 'script.php';
         ?>
     </section>

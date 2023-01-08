@@ -42,6 +42,10 @@
                         </select> -->
                     </div>
                     <div class="mb-6">
+                        <label for="slot_waktu" class="block mb-2 text-sm text-gray-600">Slot Waktu</label>
+                        <input value="<?php echo $rows['slot_waktu']; ?>" type="text" name="slot_waktu" id="slot_waktu" placeholder="Web Lanjut" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
+                    </div>
+                    <div class="mb-6">
                         <label for="mata_Kuliah" class="block mb-2 text-sm text-gray-600">Mata Kuliah</label>
                         <input value="<?php echo $rows['mata_kuliah']; ?>" type="text" name="mata_kuliah" id="mata_kuliah" placeholder="Web Lanjut" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
                     </div>
