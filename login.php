@@ -1,10 +1,34 @@
 <?php
+
+include "dbconn.php";
+error_reporting(0);
 session_start();
 
-require_once "dbconn.php";
+if (isset($_SESSION['login'])) {
+    header("Location: dashboard.php");
+}
 
+if (isset($_POST["submit"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $captcha = $_POST["captcha"];
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' AND password='$password'");
+
+    if ($_SESSION['captcha'] == $_POST['captchaInput']) {
+        if ($username == $_POST["username"] && $password == $_POST["password"]) {
+            session_start();
+            $_SESSION['login'] = true;
+            header("Location: dashboard.php");
+        } else {
+            header("Location: login.php");
+        }
+    } else {
+        echo "<script>alert('Error')</script>";
+    }
+}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +36,7 @@ require_once "dbconn.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <title>Login</title>
 </head>
 
 
@@ -33,7 +57,7 @@ require_once "dbconn.php";
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-                <form method="POST" action="login.php">
+                <form method="POST">
                     <div>
                         <label for="username" class="block text-sm font-medium text-gray-700 leading-5">
                             Username
@@ -59,8 +83,25 @@ require_once "dbconn.php";
                     </div>
 
                     <div class="mt-6">
+
+
+                        <label for="captcha" class="block text-sm font-medium text-gray-700 leading-5">
+                            Captcha
+                        </label>
+
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <img src="captcha.php" alt="Captcha">
+                        </div>
+
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input id="captcha" name="captchaInput" type="text" value="" maxlength="6" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+                        </div>
+
+                    </div>
+
+                    <div class="mt-6">
                         <span class="block w-full rounded-md shadow-sm">
-                            <button type="submit" name="signin" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-black bg-white border-2 border-black   hover:bg-black hover:text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                            <button type="submit" name="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-black bg-white border-2 border-black   hover:bg-black hover:text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
                                 Sign in
                             </button>
                         </span>
@@ -73,7 +114,7 @@ require_once "dbconn.php";
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 
 </body>

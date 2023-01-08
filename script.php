@@ -7,6 +7,7 @@
                 action: action,
                 id_data: $("#id_data").val(),
                 hari: $("#hari").val(),
+                slot_waktu: $("#slot_waktu").val(),
                 mata_kuliah: $("#mata_kuliah").val(),
                 dosen: $("#dosen").val(),
                 ruang: $("#ruang").val(),

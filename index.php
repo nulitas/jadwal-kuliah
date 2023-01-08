@@ -34,12 +34,15 @@ $total = mysqli_num_rows($query);
     <div class="container">
         <header class="bg-black  p-5 flex justify-between text-white ">
             <h1 class="text-lg">Jadwal</h1>
-            <a href="login.php" class="font-bold">Login</a>
+            <?php if (!isset($_SESSION["login"])) : ?>
+                <a href="login.php" class="font-bold">Login</a>
+            <?php else : ?>
+                <a href="login.php" class="font-bold">Dashboard</a>
+            <?php endif ?>
         </header>
 
-        <section class="my-5 max-w-screen-lg gap-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto py-10 px-10">
+        <section class="my-5 max-w-screen-lg gap-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 mx-auto py-10 px-10">
             <?php
-
             $page = isset($_GET['hal']) ? (int)($_GET['hal']) : 1;
             $perPage = 4;
             if ($page > 1) {
@@ -48,13 +51,12 @@ $total = mysqli_num_rows($query);
                 $start = 0;
             }
 
-
             $rows = mysqli_query($conn, "SELECT * FROM data_master LIMIT $start, $perPage");
             $no = 1;
             ?>
 
             <?php foreach ($rows as $row) : ?>
-                <div class=" bg-white font-inter w-full overflow-hidden shadow-lg hover:bg-black hover:text-white">
+                <div class=" bg-white font-inter w-full overflow-hidden shadow-lg transition  duration-300 ease-in-out hover:bg-black hover:text-white">
 
                     <div class="content p-[25px] flex flex-col" id=<?php echo $row["id_data"]; ?>>
                         <p class="text-indigo-500 font-[300] text-[12px]">
@@ -62,7 +64,6 @@ $total = mysqli_num_rows($query);
 
                         <h1 class="font-[600] tracking-[0.33px]">
                             <?php echo $row['mata_kuliah']; ?></h1>
-
 
                         <p class="text-[#a1a1a6] font-[300] leading-[1.5] text-[14px]">
                             <?php echo $row['ruang']; ?></p>
@@ -79,7 +80,7 @@ $total = mysqli_num_rows($query);
                                     <?php echo $row['dosen']; ?></p>
                                 <p class="text-[13px] flex mt-1 text-[#a1a1a6] items-center">
                                     <span>
-                                        <?php echo $row['hari']; ?>, <?php echo $row['tahun']; ?></span>
+                                        <?php echo $row['slot_waktu']; ?> - <?php echo $row['hari']; ?>, <?php echo $row['tahun']; ?></span>
                                     <span class="block w-[3px] h-[3px] bg-[#a1a1a6] rounded-full mx-1">
                                     </span>
                                     <span>

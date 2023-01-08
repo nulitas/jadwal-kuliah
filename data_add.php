@@ -33,6 +33,20 @@
                         </select>
                     </div>
                     <div class="mb-6">
+                        <label for="slot_waktu" class="block mb-2 text-sm text-gray-600">Slot Waktu</label>
+                        <select name="slot_waktu" id="slot_waktu" class="form-select">
+                            <option value="07.30 - 08.20">07.30 - 08.20</option>
+                            <option value="08.20 - 09.10">08.20 - 09.10</option>
+                            <option value="09.10 - 10.00">09.10 - 10.00</option>
+                            <option value="10.15 - 11.05">10.15 - 11.05</option>
+                            <option value="11.05 - 11.55">11.05 - 11.55</option>
+                            <option value="12.45 - 13.35">12.45 - 13.35</option>
+                            <option value="13.35 - 14.25">13.35 - 14.25</option>
+                            <option value="14.25 - 15.15">14.25 - 15.15</option>
+                            <option value="15.45 - 16.35">15.45 - 16.35</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
                         <label for="mata_Kuliah" class="block mb-2 text-sm text-gray-600">Mata Kuliah</label>
                         <input type="text" name="mata_kuliah" id="mata_kuliah" placeholder="Web Lanjut" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
                     </div>
