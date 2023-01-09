@@ -48,9 +48,9 @@ if (isset($_POST["submit"])) {
                 Login as Admin
             </h2>
             <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
-                Or
+                Atau
                 <a href="register.php" class="font-medium text-slate-800 hover:text-slate-700 focus:outline-none focus:underline transition ease-in-out duration-150">
-                    Buat akun baru (belum jadi)
+                    Buat akun baru
                 </a>
             </p>
         </div>

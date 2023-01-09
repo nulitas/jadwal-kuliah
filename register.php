@@ -1,42 +1,25 @@
 <?php
 
-require 'dbconn.php';
+include "dbconn.php";
 error_reporting(0);
 session_start();
 
 
-$query = mysqli_query($conn, "SELECT * FROM users where username='$username'");
-if (mysqli_num_rows($query) > 0) {
-    echo "<script>alert('Username Already Exists')</script>";
-    exit;
-}
+if (isset($_POST["submit"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $confirmPassword = $_POST["confirmPassword"];
+    $result = mysqli_query($conn, "INSERT INTO users(username, password) VALUES('$username', '$password')");
 
-if (isset($_POST['submit'])) {
 
-    $username = $_POST['username'];
-    $password = md5($_POST['password']);
-    $cpassword = md5($_POST['passwordRepeat']);
-
-    if ($password == $cpassword) {
-        $query = "SELECT * FROM users WHERE username='$username'";
-        $result = mysqli_query($conn, $query);
-
-        if (!$result->num_rows > 0) {
-            $query = "INSERT INTO users (username, password) VALUES ('$username', '$password') ";
-            $result = mysqli_query($conn, $query);
-
-            if ($result) {
-                echo "<script> alert('Regis selesai') </script>";
-                $username = "";
-                $_POST['password'] = "";
-                $_POST['passwordRepeat'] = "";
-            } else {
-                echo "<script> alert('Salah') </script>";
-            }
-        }
+    if ($username == $_POST["username"] && $password == $confirmPassword) {
+        session_start();
+        $_SESSION['register'] = true;
+        header("Location: login.php");
+    } else {
+        echo "<script> alert('Salah') </script>";
     }
 }
-
 
 
 
@@ -52,29 +35,95 @@ if (isset($_POST['submit'])) {
     <title>Register</title>
 </head>
 
+
 <body>
+    <div class="flex flex-col justify-center min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
 
-    <div class="wrapper justify-center h-screen flex bg-gray-100">
-        <div class="form-wrapper bg-white p-10 m-auto w-96 shadow">
-            <h2 class="text-3xl font-bold py-5 mb-5 text-black uppercase">Register (masih belum bisa)</h3>
-                <form action="POST" class="flex flex-col gap-5 justify-center items-center">
-                    <input type="hidden" name="type" value="register" />
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+            <h2 class="mt-6 text-3xl font-bold text-center text-gray-900 ">
+                Register
+            </h2>
+            <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
+                Atau
+                <a href="login.php" class="font-medium text-slate-800 hover:text-slate-700 focus:outline-none focus:underline transition ease-in-out duration-150">
+                    Login
+                </a>
+            </p>
+        </div>
 
-                    <input type="text" name="username" placeholder="Username" class="appearance-none block w-full px-3 py-2 border border-gray-300  placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-black transition duration-150 ease-in-out sm:text-sm sm:leading-5 " />
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <a href="index.php" class="border-2 border-black px-5 float-left  hover:text-white hover:bg-black"> X </a>
+            <div class="px-4 py-8 bg-white shadow  sm:px-10">
+
+                <form method="POST">
+                    <div>
+                        <label for="username" class="mt-5 block text-sm font-medium text-gray-700 leading-5">
+                            Username
+                        </label>
+
+                        <div class="mt-1  shadow-sm">
+                            <input id="username" name="username" type="username" required="" autofocus="" class="appearance-none block w-full px-3 py-2 border border-gray-300  placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-black transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+                        </div>
+
+                    </div>
+
+                    <div class="mt-6">
+
+                        <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
+                            Password
+                        </label>
+
+                        <div class="mt-1  shadow-sm">
+                            <input id="password" name="password" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300  placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-black transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+                        </div>
+
+                    </div>
+                    <div class="mt-6">
+
+                        <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
+                            Confirm Password
+                        </label>
+
+                        <div class="mt-1  shadow-sm">
+                            <input id="confirmPassword" name="confirmPassword" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300  placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-black transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+                        </div>
+
+                    </div>
+
+                    <!-- <div class="mt-6">
 
 
-                    <input type="password" name="password" placeholder="Password" class="appearance-none block w-full px-3 py-2 border border-gray-300  placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-black transition duration-150 ease-in-out sm:text-sm sm:leading-5 " />
+                        <label for="captcha" class="block text-sm font-medium text-gray-700 leading-5">
+                            Captcha
+                        </label>
 
-                    <input type="password" name="passwordRepeat" placeholder="Repeat Password" class="appearance-none block w-full px-3 py-2 border border-gray-300  placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-black transition duration-150 ease-in-out sm:text-sm sm:leading-5 " />
+                        <div class="mt-1  shadow-sm">
+                            <img src="captcha.php" alt="Captcha">
+                        </div>
 
-                    <button type="submit" name="submit" class="w-full mt-5 px-3 py-2 hover:bg-black hover:text-white bg-white border-black border-2 text-black active:bg-black">
-                        Register
-                    </button>
+                        <div class="mt-1  shadow-sm">
+                            <input id="captcha" name="captchaInput" type="text" value="" maxlength="6" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300  placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-black transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+                        </div>
 
-                    <span class="mt-6   text-center text-gray-900"> Sudah punya akun ? <a href="login.php" class="font-bold text-slate-800 hover:text-slate-700 focus:outline-none focus:underline transition ease-in-out duration-150">Login</a></span>
+                    </div> -->
+
+                    <div class="mt-6">
+                        <span class="block w-full  shadow-sm">
+                            <button type="submit" name="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-black bg-white border-2 border-black   hover:bg-black hover:text-white focus:outline-none focus:border-black focus:shadow-outline-indigo active:bg-black transition duration-150 ease-in-out">
+                                Sign Up
+                            </button>
+                        </span>
+                    </div>
                 </form>
+
+
+
+            </div>
         </div>
     </div>
+
+
+
 
 </body>
 

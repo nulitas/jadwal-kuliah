@@ -43,7 +43,7 @@
                     </div>
                     <div class="mb-6">
                         <label for="slot_waktu" class="block mb-2 text-sm text-gray-600">Slot Waktu</label>
-                        <input value="<?php echo $rows['slot_waktu']; ?>" type="text" name="slot_waktu" id="slot_waktu" placeholder="Web Lanjut" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
+                        <input value="<?php echo $rows['slot_waktu']; ?>" type="text" name="slot_waktu" id="slot_waktu" placeholder="07.30 - 08.20" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
                     </div>
                     <div class="mb-6">
                         <label for="mata_Kuliah" class="block mb-2 text-sm text-gray-600">Mata Kuliah</label>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="mb-6">
                         <label for="dosen" class="block mb-2 text-sm text-gray-600">Dosen</label>
-                        <input value="<?php echo $rows['dosen']; ?>" type="text" name="dosen" id="dosen" placeholder="Pak Anggi" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
+                        <input value="<?php echo $rows['dosen']; ?>" type="text" name="dosen" id="dosen" placeholder="Anggi" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
                     </div>
                     <div class="mb-6">
                         <label for="ruang" class="block mb-2 text-sm text-gray-600">Ruang</label>
@@ -59,11 +59,11 @@
                     </div>
                     <div class="mb-6">
                         <label for="kelas" class="block mb-2 text-sm text-gray-600">Kelas</label>
-                        <input value="<?php echo $rows['kelas']; ?>" type="text" name="kelas" id="kelas" placeholder="TI-2B" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
+                        <input value="<?php echo $rows['kelas']; ?>" type="text" name="kelas" id="kelas" placeholder="TI-3B" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
                     </div>
                     <div class="mb-6">
                         <label for="tahun" class="block mb-2 text-sm text-gray-600">Tahun</label>
-                        <input value="<?php echo $rows['tahun']; ?>" type="text" name="tahun" id="tahun" placeholder="2022" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
+                        <input value="<?php echo $rows['tahun']; ?>" type="text" name="tahun" id="tahun" placeholder="2022-2023" required class="w-full px-3 py-2 placeholder-gray-300 border border-black  focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
                     </div>
                     <div class="mb-6">
                         <label for="jumlah_jam" class="block mb-2 text-sm text-gray-600">Jumlah Jam</label>

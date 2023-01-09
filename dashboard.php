@@ -63,7 +63,7 @@ if (!isset($_SESSION['login'])) {
         }
 
         .custom-file-input::before {
-            content: 'Pilih file';
+            content: 'Pilih File';
             display: inline-block;
             background: linear-gradient(top, #f9f9f9, #e3e3e3);
             border: 2px solid black;
@@ -98,7 +98,9 @@ if (!isset($_SESSION['login'])) {
         <div class="border-black border flex flex-col w-fit mx-auto m-5 p-5">
             <form action="in_xlsx.php" method="post" enctype="multipart/form-data">
                 <div class="flex justify-between">
+
                     <span>Menu</span><br>
+                    <a href="index.php" class="bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 ">Home</a>
                     <a href="logout.php" class="bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 ">Logout</a>
                 </div>
 
@@ -120,11 +122,11 @@ if (!isset($_SESSION['login'])) {
                 </a>
             </button>
 
-            <span class=" font-bold">Unduh JSON</span>
+            <span class=" font-bold">Lihat JSON</span>
 
             <button class=" bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 " id="addButton">
                 <a href="data_array.php">
-                    Lihat JSON
+                    Unduh JSON
                 </a>
             </button>
 
