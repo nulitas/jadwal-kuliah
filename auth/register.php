@@ -9,15 +9,14 @@ if (isset($_POST["submit"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $confirmPassword = $_POST["confirmPassword"];
-    $result = mysqli_query($conn, "INSERT INTO users(username, password) VALUES('$username', '$password')");
-
 
     if ($username == $_POST["username"] && $password == $confirmPassword) {
         session_start();
+        $result = mysqli_query($conn, "INSERT INTO users(username, password) VALUES('$username', '$password')");
         $_SESSION['register'] = true;
-        header("Location: ../config/login.php");
+        header("Location: login.php");
     } else {
-        echo "<script> alert('Salah') </script>";
+        echo "<script> alert('Error 404') </script>";
     }
 }
 
