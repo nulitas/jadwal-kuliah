@@ -1,10 +1,10 @@
 <?php
 
-include 'dbconn.php';
+include 'config/dbconn.php';
 session_start();
 
 if (!isset($_SESSION['login'])) {
-    header("Location: login.php");
+    header("Location: auth/login.php");
 }
 
 
@@ -101,7 +101,7 @@ if (!isset($_SESSION['login'])) {
 
                     <span>Menu</span><br>
                     <a href="index.php" class="bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 ">Home</a>
-                    <a href="logout.php" class="bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 ">Logout</a>
+                    <a href="auth/logout.php" class="bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 ">Logout</a>
                 </div>
 
                 <div class="m-4">
@@ -116,19 +116,17 @@ if (!isset($_SESSION['login'])) {
             </form>
 
             <span class=" font-bold">or</span>
-            <button class="bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 " id="addButton">
-                <a href="data_add.php">
-                    Tambah Manual
-                </a>
-            </button>
+
+            <a href="../function/data_add.php" class="text-center bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 " id="addButton">
+                Tambah Manual
+            </a>
 
             <span class=" font-bold">Lihat JSON</span>
 
-            <button class=" bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 " id="addButton">
-                <a href="data_array.php">
-                    Unduh JSON
-                </a>
-            </button>
+            <a href="data_array.php" class="text-center bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 ">
+                Unduh JSON
+            </a>
+
 
         </div>
         <div class="outer-wrapper">
@@ -148,7 +146,7 @@ if (!isset($_SESSION['login'])) {
                             <th>Tahun</th>
                             <th>Jumlah Jam</th>
                             <th>Semester</th>
-                            <th>Action</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
 
@@ -171,7 +169,7 @@ if (!isset($_SESSION['login'])) {
                                 <td><?php echo $row['tahun']; ?></td>
                                 <td><?php echo $row['jumlah_jam']; ?></td>
                                 <td><?php echo $row['semester']; ?></td>
-                                <td> <a href="data_edit.php?id_data=<?php echo $row['id_data']; ?>">Ubah</a> | <button type="button" onclick="submitData(<?php echo $row['id_data']; ?>);">Hapus</button> </td>
+                                <td> <a href="../function/data_edit.php?id_data=<?php echo $row['id_data']; ?>">Ubah</a> | <button type="button" onclick="submitData(<?php echo $row['id_data']; ?>);">Hapus</button> </td>
                             </tr>
                         </tbody>
 

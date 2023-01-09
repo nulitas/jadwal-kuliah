@@ -27,7 +27,7 @@
         "id_data": "357",
         "hari": "Rabu",
         "slot_waktu": "09.10 - 10.00",
-        "mata_kuliah": "Algoritma",
+        "mata_kuliah": "Sistem Operasi",
         "dosen": "Ayres",
         "ruang": "AA301",
         "kelas": "TI 3A",
@@ -94,17 +94,5 @@
         "tahun": " 2021-2022",
         "jumlah_jam": "5",
         "semester": "6"
-    },
-    {
-        "id_data": "364",
-        "hari": "Rabu",
-        "slot_waktu": "11.05 - 11.55",
-        "mata_kuliah": "Quidem ratione recus",
-        "dosen": "Distinctio Amet in",
-        "ruang": "At ad ut doloremque ",
-        "kelas": "TI-4B",
-        "tahun": " 2021-2022",
-        "jumlah_jam": "2",
-        "semester": "2"
     }
 ]

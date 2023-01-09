@@ -13,7 +13,7 @@
     <div class="container mx-auto ">
 
         <div class="max-w-xl p-5 mx-auto my-10 bg-white shadow-sm border-black border-2">
-            <a href="dashboard.php" class="border-2 border-black p-1 hover:text-white hover:bg-black"> Back </a>
+            <a href="../dashboard.php" class="border-2 border-black p-1 hover:text-white hover:bg-black"> Back </a>
             <div class="text-center">
                 <h1 class="my-3 text-3xl font-semibold text-gray-700">Tambah Data</h1>
                 <p class="text-gray-400">Menambahkan data untuk jadwal mata kuliah</p>
@@ -95,7 +95,7 @@
     </div>
     <br>
 
-    <?php require 'script.php';
+    <?php require '../script.php';
 
     ?>
 </body>

@@ -1,5 +1,5 @@
 <?php
-require 'dbconn.php';
+require 'config/dbconn.php';
 $query = mysqli_query($conn, "SELECT * FROM data_master");
 $total = mysqli_num_rows($query);
 
@@ -44,9 +44,9 @@ $total = mysqli_num_rows($query);
             <h1 class="text-[24px] text-black font-extrabold underline">JadwalApp</h1>
             <?php
             if (!isset($_SESSION['login'])) {
-                echo ' <a href="login.php" class="transition  duration-300 ease-in-out font-bold text-black p-2 hover:text-white hover:bg-black">Login</a>';
+                echo ' <a href="auth/login.php" class="transition  duration-300 ease-in-out font-bold text-black p-2 hover:text-white hover:bg-black">Login</a>';
             } else {
-                echo '<a href="login.php" class="font-bold">Dashboard</a>';
+                echo '<a href="auth/login.php" class="font-bold">Dashboard</a>';
             }
 
 
