@@ -23,7 +23,7 @@
                 data: data,
                 success: function(response) {
                     alert(response);
-                    if (response == "Deleted Successfully") {
+                    if (response == "Data berhasil dihapus") {
                         $("#" + action).css("display", "none");
                     }
                 }

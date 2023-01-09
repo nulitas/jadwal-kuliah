@@ -120,10 +120,10 @@ if (!isset($_SESSION['login'])) {
                 </a>
             </button>
 
-            <span class=" font-bold">Intip JSON</span>
+            <span class=" font-bold">Unduh JSON</span>
 
             <button class=" bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 " id="addButton">
-                <a href="data_view.php">
+                <a href="data_array.php">
                     Lihat JSON
                 </a>
             </button>
@@ -169,7 +169,7 @@ if (!isset($_SESSION['login'])) {
                                 <td><?php echo $row['tahun']; ?></td>
                                 <td><?php echo $row['jumlah_jam']; ?></td>
                                 <td><?php echo $row['semester']; ?></td>
-                                <td> <a href="data_edit.php?id_data=<?php echo $row['id_data']; ?>">Edit</a> | <button type="button" onclick="submitData(<?php echo $row['id_data']; ?>);">Delete</button> </td>
+                                <td> <a href="data_edit.php?id_data=<?php echo $row['id_data']; ?>">Ubah</a> | <button type="button" onclick="submitData(<?php echo $row['id_data']; ?>);">Hapus</button> </td>
                             </tr>
                         </tbody>
 

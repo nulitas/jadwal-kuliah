@@ -23,7 +23,8 @@ USE `jadwal_kuliah`;
 CREATE TABLE IF NOT EXISTS `data_master` (
   `id_data` int NOT NULL AUTO_INCREMENT,
   `hari` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0',
-  `mata_kuliah` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0',
+  `slot_waktu` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '0',
+  `mata_kuliah` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `dosen` varchar(50) DEFAULT NULL,
   `ruang` varchar(50) DEFAULT NULL,
   `kelas` varchar(50) DEFAULT NULL,
@@ -31,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `data_master` (
   `jumlah_jam` int DEFAULT NULL,
   `semester` int DEFAULT NULL,
   PRIMARY KEY (`id_data`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 

@@ -27,7 +27,7 @@ function insert()
 
     $query = "INSERT INTO data_master (hari, slot_waktu , mata_kuliah, dosen, ruang, kelas, tahun, jumlah_jam, semester) VALUES( '$hari', '$slot_waktu' , '$mata_kuliah', '$dosen', '$ruang' ,'$kelas', ' $tahun', '$jumlah_jam ', '$semester')";
     mysqli_query($conn, $query);
-    echo "Inserted Successfully";
+    echo "Data berhasil ditambahkan";
 
     if (isset($_POST['submit'])) {
         header("Location: dashboard.php");
@@ -51,7 +51,7 @@ function edit()
 
     $query = "UPDATE data_master SET hari = '$hari', slot_waktu ='$slot_waktu' , mata_kuliah = '$mata_kuliah', dosen = '$dosen', ruang = '$ruang', kelas = '$kelas', tahun ='$tahun', jumlah_jam='$jumlah_jam', semester='$semester' WHERE id_data = $id_data";
     mysqli_query($conn, $query);
-    echo "Updated Successfully";
+    echo "Data berhasil diperbarui";
 }
 
 function delete()
@@ -61,5 +61,5 @@ function delete()
     $id_data = $_POST["action"];
     $query = "DELETE FROM data_master WHERE id_data = $id_data";
     mysqli_query($conn, $query);
-    echo "Deleted Successfully";
+    echo "Data berhasil dihapus";
 }

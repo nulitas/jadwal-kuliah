@@ -1,0 +1,74 @@
+[
+    {
+        "id_data": "110",
+        "hari": "Kamis",
+        "slot_waktu": "14.25 - 15.12",
+        "mata_kuliah": "a",
+        "dosen": "Quidem quis laborum",
+        "ruang": "Esse et irure lorem",
+        "kelas": "Obcaecati perspiciat",
+        "tahun": "2012",
+        "jumlah_jam": "2",
+        "semester": "2"
+    },
+    {
+        "id_data": "111",
+        "hari": "Selasa",
+        "slot_waktu": "15.45 - 16.35",
+        "mata_kuliah": "Voluptatem provident",
+        "dosen": "Cumque natus incidun",
+        "ruang": "Omnis est id sint ",
+        "kelas": "Magna illo saepe qua",
+        "tahun": "2023",
+        "jumlah_jam": "2",
+        "semester": "2"
+    },
+    {
+        "id_data": "114",
+        "hari": "Senin",
+        "slot_waktu": "15.45 - 16.35",
+        "mata_kuliah": "Dolores officia hic ",
+        "dosen": "Consequat Explicabo",
+        "ruang": "Eos vel consequuntu",
+        "kelas": "Vel architecto susci",
+        "tahun": "2020",
+        "jumlah_jam": "1",
+        "semester": "7"
+    },
+    {
+        "id_data": "115",
+        "hari": "Senin",
+        "slot_waktu": "07.30 - 08.20",
+        "mata_kuliah": "Culpa aspernatur an",
+        "dosen": "Minima occaecat labo",
+        "ruang": "Animi eligendi enim",
+        "kelas": "Doloremque vitae odi",
+        "tahun": "2020",
+        "jumlah_jam": "6",
+        "semester": "8"
+    },
+    {
+        "id_data": "117",
+        "hari": "Selasa",
+        "slot_waktu": "15.45 - 16.35",
+        "mata_kuliah": "Web Lanjut",
+        "dosen": "Pak Anggi",
+        "ruang": "AA404",
+        "kelas": "TI-3B",
+        "tahun": "2022",
+        "jumlah_jam": "4",
+        "semester": "3"
+    },
+    {
+        "id_data": "118",
+        "hari": "Jumat",
+        "slot_waktu": "14.25 - 15.15",
+        "mata_kuliah": "Qui dolore assumenda",
+        "dosen": "Nulla harum aut aliq",
+        "ruang": "Rerum omnis doloribu",
+        "kelas": "TI-3B",
+        "tahun": "2020",
+        "jumlah_jam": "2",
+        "semester": "8"
+    }
+]
