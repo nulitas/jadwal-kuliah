@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>Edit</title>
+    <title>Ubah Data</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
             <div>
                 <form action="" method="POST">
                     <?php
-                    require '../config/dbconn.php';
+                    require 'config/dbconn.php';
                     $id_data = $_GET["id_data"];
                     $rows = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM data_master WHERE id_data = $id_data"));
 
@@ -86,7 +86,7 @@
     </div>
     <br>
 
-    <?php require '../script.php';
+    <?php require 'script.php';
     ?>
 </body>
 

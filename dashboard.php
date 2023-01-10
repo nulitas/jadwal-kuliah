@@ -117,7 +117,7 @@ if (!isset($_SESSION['login'])) {
 
             <span class=" font-bold">or</span>
 
-            <a href="../function/data_add.php" class="text-center bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 " id="addButton">
+            <a href="data_add.php" class="text-center bg-slate-50 border-black border-2 hover:bg-black hover:text-white text-black font-bold py-2 px-4 " id="addButton">
                 Tambah Manual
             </a>
 
@@ -169,7 +169,7 @@ if (!isset($_SESSION['login'])) {
                                 <td><?php echo $row['tahun']; ?></td>
                                 <td><?php echo $row['jumlah_jam']; ?></td>
                                 <td><?php echo $row['semester']; ?></td>
-                                <td> <a href="../function/data_edit.php?id_data=<?php echo $row['id_data']; ?>">Ubah</a> | <button type="button" onclick="submitData(<?php echo $row['id_data']; ?>);">Hapus</button> </td>
+                                <td> <a href="data_edit.php?id_data=<?php echo $row['id_data']; ?>">Ubah</a> | <button type="button" onclick="submitData(<?php echo $row['id_data']; ?>);">Hapus</button> </td>
                             </tr>
                         </tbody>
 

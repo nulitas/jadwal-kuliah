@@ -1,5 +1,5 @@
 <?php
-require '../config/dbconn.php';
+require 'config/dbconn.php';
 
 if (isset($_POST["action"])) {
     if ($_POST["action"] == "insert") {
@@ -30,7 +30,7 @@ function insert()
     echo "Data berhasil ditambahkan";
 
     if (isset($_POST['submit'])) {
-        header("Location: ../dashboard.php");
+        header("Location: dashboard.php");
     }
 }
 
