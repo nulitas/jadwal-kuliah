@@ -1,0 +1,98 @@
+[
+    {
+        "id_data": "383",
+        "hari": "Rabu",
+        "slot_waktu": "07.30 - 08.20",
+        "mata_kuliah": "Sistem Operasi",
+        "dosen": "Indra",
+        "ruang": "AA204",
+        "kelas": "TI 1A",
+        "tahun": "2022-2023",
+        "jumlah_jam": "4",
+        "semester": "1"
+    },
+    {
+        "id_data": "384",
+        "hari": "Rabu",
+        "slot_waktu": "08.20 - 09.10",
+        "mata_kuliah": "Sistem Operasi",
+        "dosen": "Mera",
+        "ruang": "AA205",
+        "kelas": "TI 1B",
+        "tahun": "2022-2023",
+        "jumlah_jam": "4",
+        "semester": "1"
+    },
+    {
+        "id_data": "385",
+        "hari": "Rabu",
+        "slot_waktu": "09.10 - 10.00",
+        "mata_kuliah": "Sistem Operasi",
+        "dosen": "Ayres",
+        "ruang": "AA301",
+        "kelas": "TI 3A",
+        "tahun": "2022-2023",
+        "jumlah_jam": "4",
+        "semester": "1"
+    },
+    {
+        "id_data": "386",
+        "hari": "Rabu",
+        "slot_waktu": "10.15 - 11.05",
+        "mata_kuliah": "Sistem Operasi",
+        "dosen": "Dewi K",
+        "ruang": "AA302",
+        "kelas": "TI 3B",
+        "tahun": "2022-2023",
+        "jumlah_jam": "4",
+        "semester": "1"
+    },
+    {
+        "id_data": "387",
+        "hari": "Rabu",
+        "slot_waktu": "11.05 - 11.55",
+        "mata_kuliah": "Pengantar TIK",
+        "dosen": "Ratna",
+        "ruang": "AA303",
+        "kelas": "TI 5A",
+        "tahun": "2022-2023",
+        "jumlah_jam": "4",
+        "semester": "1"
+    },
+    {
+        "id_data": "388",
+        "hari": "Rabu",
+        "slot_waktu": "12.45 - 13.35",
+        "mata_kuliah": "Pengantar TIK",
+        "dosen": "Irawati",
+        "ruang": "AA304",
+        "kelas": "TI 5B",
+        "tahun": "2022-2023",
+        "jumlah_jam": "4",
+        "semester": "1"
+    },
+    {
+        "id_data": "389",
+        "hari": "Rabu",
+        "slot_waktu": "13.35 - 14.25",
+        "mata_kuliah": "Pengantar TIK",
+        "dosen": "Euis",
+        "ruang": "GSG201",
+        "kelas": "TI 7A",
+        "tahun": "2022-2023",
+        "jumlah_jam": "4",
+        "semester": "1"
+    },
+    {
+        "id_data": "390",
+        "hari": "Rabu",
+        "slot_waktu": "14.25 - 15.15",
+        "mata_kuliah": "Pengantar TIK",
+        "dosen": "Adi",
+        "ruang": "GSG202",
+        "kelas": "TI 7B",
+        "tahun": "2022-2023",
+        "jumlah_jam": "4",
+        "semester": "1"
+    }
+]
