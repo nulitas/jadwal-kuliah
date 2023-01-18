@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
     $captcha = $_POST["captcha"];
     $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' AND password='$password'");
 
-    if ($_SESSION['captcha'] == $_POST['captchaInput']) {
+    if (mysqli_num_rows($result) > 0 && $_SESSION['captcha'] == $_POST['captchaInput']) {
         if ($username == $_POST["username"] && $password == $_POST["password"]) {
             session_start();
             $_SESSION['login'] = true;

@@ -1,6 +1,7 @@
 <?php
 
-include 'config/dbconn.php';
+//include 'config/dbconn.php';
+require 'function.php';
 session_start();
 
 if (!isset($_SESSION['login'])) {
@@ -129,6 +130,16 @@ if (!isset($_SESSION['login'])) {
 
 
         </div>
+        <div class="text-center">
+            <form action="" method="get">
+                <span class= "text-black font-bold"> Pencarian </span>
+                <input type="text" name="keyword" autofocus size="40" class="border-black border-2 py-1 px-2"
+                placeholder="masukkan kata kunci pencarian..." autocomplete="off">
+                <button type="submit" name="search" class="text-black font-bold border-black border-2 hover:bg-black hover:text-white py-1 px-2">
+                    Cari!
+                </button>
+            </form>
+        </div>
         <div class="outer-wrapper">
             <div class="table-wrapper">
 
@@ -151,8 +162,13 @@ if (!isset($_SESSION['login'])) {
                     </thead>
 
                     <?php
+                    $jadwal = "SELECT * FROM data_master";
 
-                    $rows = mysqli_query($conn, "SELECT * FROM data_master");
+                    if(isset($_GET["search"])){
+                        $jadwal = search($_GET["keyword"]);
+                    }
+
+                    $rows = mysqli_query($conn, $jadwal);
                     $no = 1;
                     ?>
 

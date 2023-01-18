@@ -63,3 +63,16 @@ function delete()
     mysqli_query($conn, $query);
     echo "Data berhasil dihapus";
 }
+
+function search($keyword)
+{
+    $query = "SELECT * FROM data_master
+                WHERE 
+                hari LIKE '%$keyword%' OR
+                mata_kuliah LIKE '%$keyword%' OR
+                dosen LIKE '%$keyword%' OR
+                ruang LIKE '%$keyword%' OR
+                kelas LIKE '%$keyword%'
+            ";
+    return $query;
+}
