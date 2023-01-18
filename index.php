@@ -126,9 +126,9 @@ $total = mysqli_num_rows($query);
             echo "<span class='mx-2 cursor-default	'>Prev</span>";
         }
 
-        for ($i = 1; $i <= $pages; $i++) {
-            echo "<a href='?hal=$i' class='hover:text-slate-50'> </a>";
-        }
+        // for ($i = 1; $i <= $pages; $i++) {
+        //     echo "<a href='?hal=$i' class='hover:text-slate-50'> </a>";
+        // }
 
         for ($i = 1; $i <= $pages; $i++) {
             echo "<a href='?hal=$i' class='hover:text-slate-50'>$i </a>";

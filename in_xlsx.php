@@ -41,15 +41,17 @@ if (isset($_POST['import_file_btn'])) {
             }
         }
 
-        if (isset($msg)) {
-            $_SESSION['status'] = "File imported successfully";
-            header("Location: dashboard.php");
-        } else {
-            $_SESSION['status'] = "File importing failed";
-            header("Location: dashboard.php");
-        }
+        // if (isset($msg)) {
+        //     $_SESSION['status'] = "File imported successfully";
+        //     header("Location: dashboard.php");
+        // } else {
+        //     $_SESSION['status'] = "File importing failed";
+        //     header("Location: dashboard.php");
+        // }
+
+        header("Location: dashboard.php");
     } else {
-        $_SESSION['status'] = "invalid file";
+        // $_SESSION['status'] = "invalid file";
         header("Location: dashboard.php");
         exit(0);
     }
