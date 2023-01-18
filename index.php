@@ -136,7 +136,8 @@ $total = mysqli_num_rows($query);
             $link = $page + 1;
             echo "<a href= '?hal=$link' class='mx-2'> Next </a>";
         } else {
-            echo "<span  class='mx-2 cursor-default	' > </span>";
+            echo "<span  class='mx-2 cursor-default	' ></span>";
+
         }
 
 
