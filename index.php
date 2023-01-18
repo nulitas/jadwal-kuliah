@@ -123,12 +123,9 @@ $total = mysqli_num_rows($query);
             $link = $page - 1;
             echo "<a href= '?hal=$link' class='mx-2' > Prev </a>";
         } else {
-            echo "<span class='mx-2 cursor-default	'>Prev</span>";
+            echo "<span class='mx-2 cursor-default	'></span>";
         }
 
-        // for ($i = 1; $i <= $pages; $i++) {
-        //     echo "<a href='?hal=$i' class='hover:text-slate-50'> </a>";
-        // }
 
         for ($i = 1; $i <= $pages; $i++) {
             echo "<a href='?hal=$i' class='hover:text-slate-50'>$i </a>";
@@ -139,7 +136,7 @@ $total = mysqli_num_rows($query);
             $link = $page + 1;
             echo "<a href= '?hal=$link' class='mx-2'> Next </a>";
         } else {
-            echo "<span  class='mx-2 cursor-default	' > Next</span>";
+            echo "<span  class='mx-2 cursor-default	' > </span>";
         }
 
 
