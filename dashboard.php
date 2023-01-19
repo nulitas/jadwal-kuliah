@@ -135,16 +135,19 @@ if (!isset($_SESSION['login'])) {
                 <span class= "text-black font-bold"> Pencarian </span>
                 <input type="text" name="keyword" autofocus size="40" class="border-black border-2 py-1 px-2"
                 placeholder="masukkan kata kunci pencarian..." autocomplete="off">
-                <select name="sort"class="border-black border-2 py-1 px-2">
-                    <option value="matakuliah">Mata Kuliah</option>
-                    <option value="dosen">Dosen</option>
-                    <option value="ruang">Ruang</option>
-                    <option value="kelas">Kelas</option>
+
+                <select name="sort" class="border-black border-2 py-1 px-2">
+                    <option value="mata_kuliah" <? $sort == "mata_kuliah" ? "selected" : ""?>>Mata Kuliah</option>
+                    <option value="dosen" <? $sort == "dosen" ? "selected" : ""?>>Dosen</option>
+                    <option value="ruang" <? $sort == "ruang" ? "selected" : ""?>>Ruang</option>
+                    <option value="kelas" <? $sort == "kelas" ? "selected" : ""?>>Kelas</option>
                 </select>
+
                 <select name="sortby" class="border-black border-2 py-1 px-2">
-                    <option value="asc">Ascending</option>
-                    <option value="desc">Descending</option>
+                    <option value="asc" <?$sortby == ASC ? "selected": "" ?>>Ascending</option>
+                    <option value="desc" <?$sortby == DESC  ? "selected": "" ?>>Descending</option>
                 </select>
+
                 <button type="submit" name="search" class="text-black font-bold border-black border-2 hover:bg-black hover:text-white py-1 px-2">
                     Cari!
                 </button>
@@ -175,7 +178,7 @@ if (!isset($_SESSION['login'])) {
                     $jadwal = "SELECT * FROM data_master";
 
                     if(isset($_GET["search"])){
-                        $jadwal = search($_GET["keyword"]);
+                        $jadwal = search($_GET["keyword"], $_GET["sort"], $_GET["sortby"]);
                     }
 
                     $rows = mysqli_query($conn, $jadwal);
