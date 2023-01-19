@@ -64,7 +64,7 @@ function delete()
     echo "Data berhasil dihapus";
 }
 
-function search($keyword)
+function search($keyword, $sort, $sortby)
 {
     $query = "SELECT * FROM data_master
                 WHERE 
@@ -73,6 +73,7 @@ function search($keyword)
                 dosen LIKE '%$keyword%' OR
                 ruang LIKE '%$keyword%' OR
                 kelas LIKE '%$keyword%'
+                ORDER BY $sort $sortby
             ";
     return $query;
 }
