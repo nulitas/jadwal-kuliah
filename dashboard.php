@@ -43,14 +43,7 @@ if ($hari != "" || $kelas != ""  || $ruang != ""  || $mata_kuliah != ""  || $dos
 
 $jadwal = mysqli_query($conn, $query);
 
-if ($sort != "") {
-    if ($sort == "hari") {
-        $query .= " ORDER BY field(hari, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu')";
-    } else {
-        $query .= " ORDER BY $sort $sortBy";
-    }
-}
-$jadwal = mysqli_query($conn, $query);
+
 
 ?>
 
@@ -185,6 +178,7 @@ $jadwal = mysqli_query($conn, $query);
                     <input type="text" name="kelas" autofocus size="20" class="border-black border-2 py-1 px-2" placeholder="kelas.." autocomplete="off">
 
                 </div>
+
                 <select name="sort" class="border-black border-2 py-1 px-2">
                     <option value="mata_kuliah" <? $sort == "mata_kuliah" ? "selected" : "" ?>>Mata Kuliah</option>
                     <option value="dosen" <? $sort == "dosen" ? "selected" : "" ?>>Dosen</option>
@@ -196,7 +190,11 @@ $jadwal = mysqli_query($conn, $query);
                     <option value="asc" <? $sortby == 'ASC' ? "selected" : "" ?>>Ascending</option>
                     <option value="desc" <? $sortby == 'DESC'  ? "selected" : "" ?>>Descending</option>
                 </select>
-
+                <?php
+                if ($sort != "")
+                    $query .= " ORDER BY $sort $sortBy";
+                $jadwal = mysqli_query($conn, $query);
+                ?>
                 <button type="submit" name="search" class="text-black font-bold border-black border-2 hover:bg-black hover:text-white py-1 px-2">
                     Cari
                 </button>
