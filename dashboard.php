@@ -8,6 +8,49 @@ if (!isset($_SESSION['login'])) {
     header("Location: auth/login.php");
 }
 
+$query = "SELECT * FROM data_master";
+
+$hari = isset($_GET["hari"]) ? $_GET["hari"] : "";
+$kelas = isset($_GET["kelas"]) ? $_GET["kelas"] : "";
+$ruang = isset($_GET["ruang"]) ? $_GET["ruang"] : "";
+$mata_kuliah = isset($_GET["mata_kuliah"]) ? $_GET["mata_kuliah"] : "";
+$dosen = isset($_GET["dosen"]) ? $_GET["dosen"] : "";
+
+$sort = isset($_GET["sort"]) ? $_GET["sort"] : "";
+$sortBy = isset($_GET["sortby"]) ? $_GET["sortby"] : "asc";
+
+
+if ($hari != "" || $kelas != ""  || $ruang != ""  || $mata_kuliah != ""  || $dosen != "") {
+    $query .= " WHERE ";
+
+    if ($hari != "") {
+        $queryLike[] = "hari LIKE '%$hari%'";
+    }
+    if ($kelas != "") {
+        $queryLike[] = "kelas LIKE '%$kelas%'";
+    }
+    if ($ruang != "") {
+        $queryLike[] = "ruang LIKE '%$ruang%'";
+    }
+    if ($mata_kuliah != "") {
+        $queryLike[] = "mata_kuliah LIKE '%$mata_kuliah%'";
+    }
+    if ($dosen != "") {
+        $queryLike[] = "dosen LIKE '%$dosen%'";
+    }
+    $query .= implode(" OR ", $queryLike);
+}
+
+$jadwal = mysqli_query($conn, $query);
+
+if ($sort != "") {
+    if ($sort == "hari") {
+        $query .= " ORDER BY field(hari, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu')";
+    } else {
+        $query .= " ORDER BY $sort $sortBy";
+    }
+}
+$jadwal = mysqli_query($conn, $query);
 
 ?>
 
@@ -132,24 +175,30 @@ if (!isset($_SESSION['login'])) {
         </div>
         <div class="text-center">
             <form action="" method="get">
-                <span class= "text-black font-bold"> Pencarian </span>
-                <input type="text" name="keyword" autofocus size="40" class="border-black border-2 py-1 px-2"
-                placeholder="masukkan kata kunci pencarian..." autocomplete="off">
+                <span class="text-black font-bold"> Pencarian </span>
+                <div class="m-2">
+                    <!-- <input type="text" name="keyword" autofocus size="20" class="border-black border-2 py-1 px-2" placeholder="all.." autocomplete="off"> -->
+                    <input type="text" name="hari" autofocus size="20" class="border-black border-2 py-1 px-2" placeholder="hari.." autocomplete="off">
+                    <input type="text" name="mata_kuliah" autofocus size="20" class="border-black border-2 py-1 px-2" placeholder="mata kuliah.." autocomplete="off">
+                    <input type="text" name="dosen" autofocus size="20" class="border-black border-2 py-1 px-2" placeholder="dosen.." autocomplete="off">
+                    <input type="text" name="ruang" autofocus size="20" class="border-black border-2 py-1 px-2" placeholder="ruang.." autocomplete="off">
+                    <input type="text" name="kelas" autofocus size="20" class="border-black border-2 py-1 px-2" placeholder="kelas.." autocomplete="off">
 
+                </div>
                 <select name="sort" class="border-black border-2 py-1 px-2">
-                    <option value="mata_kuliah" <? $sort == "mata_kuliah" ? "selected" : ""?>>Mata Kuliah</option>
-                    <option value="dosen" <? $sort == "dosen" ? "selected" : ""?>>Dosen</option>
-                    <option value="ruang" <? $sort == "ruang" ? "selected" : ""?>>Ruang</option>
-                    <option value="kelas" <? $sort == "kelas" ? "selected" : ""?>>Kelas</option>
+                    <option value="mata_kuliah" <? $sort == "mata_kuliah" ? "selected" : "" ?>>Mata Kuliah</option>
+                    <option value="dosen" <? $sort == "dosen" ? "selected" : "" ?>>Dosen</option>
+                    <option value="ruang" <? $sort == "ruang" ? "selected" : "" ?>>Ruang</option>
+                    <option value="kelas" <? $sort == "kelas" ? "selected" : "" ?>>Kelas</option>
                 </select>
 
                 <select name="sortby" class="border-black border-2 py-1 px-2">
-                    <option value="asc" <?$sortby == ASC ? "selected": "" ?>>Ascending</option>
-                    <option value="desc" <?$sortby == DESC  ? "selected": "" ?>>Descending</option>
+                    <option value="asc" <? $sortby == 'ASC' ? "selected" : "" ?>>Ascending</option>
+                    <option value="desc" <? $sortby == 'DESC'  ? "selected" : "" ?>>Descending</option>
                 </select>
 
                 <button type="submit" name="search" class="text-black font-bold border-black border-2 hover:bg-black hover:text-white py-1 px-2">
-                    Cari!
+                    Cari
                 </button>
             </form>
         </div>
@@ -175,13 +224,9 @@ if (!isset($_SESSION['login'])) {
                     </thead>
 
                     <?php
-                    $jadwal = "SELECT * FROM data_master";
 
-                    if(isset($_GET["search"])){
-                        $jadwal = search($_GET["keyword"], $_GET["sort"], $_GET["sortby"]);
-                    }
 
-                    $rows = mysqli_query($conn, $jadwal);
+                    $rows = mysqli_query($conn, $query);
                     $no = 1;
                     ?>
 
